@@ -27,8 +27,8 @@ pub struct OptionChain {
 }
 
 impl OptionChain {
-    pub fn new() -> OptionChain {
-        OptionChain {
+    pub fn default() -> Self {
+        Self {
             option_map: HashMap::new(),
             sorted_key_list: vec![],
         }
@@ -76,8 +76,8 @@ impl OptionChain {
 
     // pub fn get_all_n_items(&self) -> Vec<&Position> {
     pub fn get_all_n_items(&self, n: usize) -> () {
-
-        let combinations: Vec<_> = self.sorted_key_list
+        let combinations: Vec<_> = self
+            .sorted_key_list
             .iter()
             .map(|s| &**s)
             .combinations(n)
