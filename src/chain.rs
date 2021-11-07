@@ -137,6 +137,15 @@ impl OptionChain {
             .collect()
     }
 
+    pub fn sorted_elements_as_contracts(&self) -> Vec<optioncontracts::OptionContract> {
+        self.sorted_key_list
+            .iter()
+            .map(|key| self.option_map.get(key))
+            .filter_map(|e| e)
+            .map(|y|  optioncontracts::OptionContract::from(y) )
+            .collect()
+    }
+
     // pub fn get_all_n_items(&self) -> Vec<&Position> {
     pub fn get_all_n_items(&self, n: usize) -> Vec<Vec<&str>> {
         self.sorted_key_list
